@@ -1,0 +1,14 @@
+# Enable runtime RewriteEngine if it is not by default
+RewriteEngine On
+# set base directory if it is not the default web directory of the server
+RewriteBase /api1.0/
+##
+##     Define conditions in this section. If these conditions are met then proceed to RewriteRule directive
+##
+# condition 1: if the request is not an existing file
+RewriteCond %{REQUEST_FILENAME} !-f
+# condition 2: if the request is not an existing directory
+RewriteCond %{REQUEST_FILENAME} !-d
+# Define Rules
+# capture any number of characters after the URL and passthrough (PT) to the URL mapping engine as index.php?action=captured_string
+RewriteRule ^(.*)$ index.php?action=$1 [PT,L]
