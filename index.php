@@ -83,7 +83,7 @@ function subjectList() {
 }
 
 function courseList($subject) {
-    //$info = json_decode(file_get_contents('php://input'));
+
     $sql = "select  c.id, c.maxcredits,   c.subject, c.number, c.title, c.requirement, c.postfixPrereq, c.description, c.prereq, c.rotation,
             (SELECT count(course) FROM `course_schedule` WHERE `course` = id ) as sections
          from  course as c where c.subject=:subject and c.rotation >-1 order by c.subject,  c.number ";
